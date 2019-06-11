@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Peer X Peer</title>
+    <link rel="stylesheet" type="text/css" href="carpetas.css">
+    <script src="bundle.js"></script>
+    <style>
+        #names{
+            text-align: center;
+            margin-left: 31%;
+            border: 2px solid gray;
+            width: 500px;
+            height: 150px;
+        }
+
+        #files{
+            text-align: center;
+            width: 500px;
+            height: 60px;
+            margin-left: 31%;
+            border: 2px solid gray;
+        }
+    </style>
+</head>
+
+    <div id='files'>
+    
+    </div>
+    
+        <div id = 'names' class = "scroll"></div>
+    
+    
+
+    <form action="">
+        <div class="example-chat l-demo-container">
+            <header>Chat Global</header>
+            
+            <ul id='example-messages' class="example-chat-messages">
+                <div id= 'messages'></div>
+            </ul>
+            
+            <footer>
+                <input type='text' id='messageInput'  placeholder='Mensaje...' class="uno">
+                <input type="submit" value="Enviar" width= "100px" class="dos">
+            </footer>
+        </div>
+    </form>
+
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">///Esto va con el cliente
+    var socket = io.connect('http://190.200.104.21:3000');
+
+    socket.emit('carpetas', ' ');
+
+    $(function () {
+      var socket = io.connect('http://190.200.104.21:3000');
+      $('form').submit(function(){
+        console.log("AAAAAAA");
+        const params = new Map(location.search.slice(1).split('&').map(kv => kv.split('=')))
+
+        var message = {
+          author: params.get('var'),
+          text: document.getElementById('messageInput').value
+        };
+
+        socket.emit('new-message', message);
+
+        document.getElementById("messageInput").value = "";
+
+        return false;
+      });
+    });
+
+    function pasartxt(i){
+        //var direccion = './archivos/'+documento
+        //socket.emit('ruta', direccion)
+        //console.log(direccion)
+        return function(e){
+            console.log(i)
+        }
+        
+    }
+
+    //socket.on('folders',(result) =>{
+      //  var names = document.getElementById('names')
+        //var insert = '<p>'+result+'</p>' 
+       // names.innerHTML = insert
+    //});
+    socket.on('folders', (result, extens, results)=>{
+        var names = document.getElementById('names')
+        var insert = '<p>'+result+'</p>' 
+        names.innerHTML = insert
+        var musica  = new String
+        ///////
+        const files = document.getElementById('files')
+        var htmlToInsert = ''
+        for(var i = 0; i < extens.length ;i++){
+            switch(extens[i]){
+                case 'txt':
+
+                    htmlToInsert += '<a href = "texteditor.html"><img src = "/resource/text-file.png" height="52" width="52"/></a></div>'
+                    
+                break;
+
+                case 'mp3':
+                    musica = ''
+                    for(var k = 52; k < results[i].length; k++){
+                        musica += results[i][k]
+                    }
+                
+                    htmlToInsert += '<a href = /archivos/'+musica+'><img src = "/resource/musical-note.png" height="52" width="52"/></a>'
+
+                break;
+
+                case 'xls':
+                    htmlToInsert += '<a href = #><img src = "/resource/table-grid.png" height="52" width="52"/></a>'
+
+                break;
+
+                default:
+                    htmlToInsert += '<img src = "/resource/cancel.png" alt = "Archivo no soportado" height="52" width="52"/>'
+
+                break;
+            }
+        };
+        files.innerHTML = htmlToInsert
+    });
+</script>
+
+
+</html>

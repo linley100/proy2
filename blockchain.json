@@ -1,0 +1,42 @@
+[
+ {
+  "previousHash": "0",
+  "timestamp": "2019-06-11T00:35:29.758Z",
+  "usuario": " ",
+  "contraseña": " ",
+  "nonce": 0,
+  "hash": "8d298b7ecd218442ee5a7466d0c387db6c751cc2b4cd52202eb75c1b75faa925"
+ },
+ {
+  "previousHash": "8d298b7ecd218442ee5a7466d0c387db6c751cc2b4cd52202eb75c1b75faa925",
+  "timestamp": "2019-06-11T00:35:29.805Z",
+  "usuario": "Felix",
+  "contraseña": "123",
+  "nonce": 597,
+  "hash": "007a66b0ef08fa96eeb6b4a55c9d698b845715afa3ff5eafce77601029369f84"
+ },
+ {
+  "previousHash": "007a66b0ef08fa96eeb6b4a55c9d698b845715afa3ff5eafce77601029369f84",
+  "timestamp": "2019-06-11T00:35:30.133Z",
+  "usuario": "Ricardo",
+  "contraseña": "abcdefg",
+  "nonce": 43,
+  "hash": "00dc7bb2954e88db903307710923e3e1e72ba35271aae6595035f77b378803d8"
+ },
+ {
+  "previousHash": "00dc7bb2954e88db903307710923e3e1e72ba35271aae6595035f77b378803d8",
+  "timestamp": "2019-06-11T11:08:31.986Z",
+  "usuario": "Carlos",
+  "contraseña": "ricardo",
+  "nonce": 1510,
+  "hash": "001282a641aebc3dc186bdc93d4a4ad720cb7edf5406b735cdaa704c08afe998"
+ },
+ {
+  "previousHash": "001282a641aebc3dc186bdc93d4a4ad720cb7edf5406b735cdaa704c08afe998",
+  "timestamp": "2019-06-11T11:55:08.946Z",
+  "usuario": "Jose",
+  "contraseña": "mendoza",
+  "nonce": 187,
+  "hash": "00ae8959111f0a5b667fca36bedb971ee8447c1f4e784dc82bca37364e7cc6aa"
+ }
+]

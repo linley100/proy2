@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Peer X Peer</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+  <script src="dist/bundle.js"></script>
+</head>
+<body>
+  <!-- login div -->
+<div class="login">
+  <!-- login header -->
+    <h1 id="header">Bienvenido</h1>
+  <!-- start da login goodness -->
+    <form id="form" action="">
+      <input type="text" id="username" placeholder="Username" maxlength="16"><br />
+      <input type="password" id="password" placeholder="Password"><br />
+      <input type="submit" value="Registrarse">
+    </forn>
+  </login>
+
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+    var socket = io.connect('http://190.200.104.21:3000');
+
+    socket.on('registro', function(bool) {
+      if(bool){
+        window.alert("Usuario ya usado");
+      }else{
+        window.alert("Registrado");
+        location.assign("./index.html");
+      };
+    });
+
+    $(function () {
+      $('form').submit(function(){
+
+        var message = {
+          usuario: document.getElementById('username').value,
+          contra: document.getElementById('password').value
+        };
+
+        socket.emit('registrar', message);
+
+        return false;
+      });
+    });
+  </script>
+
+</body>
+</html>
